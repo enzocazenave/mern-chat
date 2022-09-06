@@ -7,6 +7,103 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.form-input {
+    border-radius: 5px;
+    border: none;
+    border: 1px solid rgb(0,0,0,0.5);
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    outline: none;   
+    padding: 8px;
+    width: 100%;
+}
+
+.form-input:focus {
+    border-color: #09f;
+}
+
+/* 
+    LoginPage in src/auth/pages/ 
+*/
+
+.LoginPage-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    padding: 25px;
+    width: 100vw;
+    background-color: rgb(193, 226, 249);
+}
+
+.LoginPage-container_box {
+    background-color: #09f;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.LoginPage-container_box__text {
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+}
+
+.LoginPage-container_form {
+    background-color: var(--login-form-color);
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+    padding: 15px;
+    width: 100%;
+}
+
+.LoginPage-container_form__title {
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.LoginPage-container_form__button {
+    background-color: var(--light-blue);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    width: 100%;
+    transition: opacity .3s;
+}
+
+.LoginPage-container_form__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.LoginPage-container_form__redirect {
+    background-color: var(--login-redirect-color);
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity .3s;
+}
+
+.LoginPage-container_form__redirect:hover {
+    opacity: 0.8;
+}
+
+/* -------------------- */
+
+/* 
+    LoadingPage in src/pages/ 
+*/
+
 .LoadingPage-container {
     align-items: center;
     display: flex;
@@ -21,6 +118,10 @@
     font-size: 45px;
 }
 
+/* -------------------- */
+
+/* ANIMACIONES */
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -29,3 +130,57 @@
         transform: rotate(360deg);
     }
 }
+
+.fadeIn {
+    animation: fadeIn 0.3s ease;
+}
+
+.fadeIn-lg {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* -------------------- */
+
+
+/* VARIABLES */
+
+:root {
+    --light-blue: #09f;
+    --login-background-color: rgb(193, 226, 249);
+    --login-form-color: rgb(113, 170, 210);
+    --login-redirect-color: rgb(231, 122, 124);
+}
+
+/* -------------------- */
+
+
+/* MEDIA QUERYS */
+
+@media (min-width: 800px) {
+    .LoginPage-container {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .LoginPage-container_box {
+        width: 25%;
+    }
+
+    .LoginPage-container_form {
+        margin: 0;
+        width: 25%
+    }
+}
+
+/* -------------------- */
+

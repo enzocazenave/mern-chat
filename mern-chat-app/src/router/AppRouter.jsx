@@ -1,10 +1,10 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { LoginPage } from '../auth';
 import { LoadingPage, MainPage } from '../pages/';
+import { AuthRoutes } from '../auth/routes/AuthRoutes';
 
 export const AppRouter = () => {
 
-    const status = 'checking';
+    const status = 'authenticated';
 
     if (status === 'checking') return( <LoadingPage /> );
     
@@ -14,8 +14,7 @@ export const AppRouter = () => {
                 (status === 'not-authenticated')
                     ? (
                         <>
-                            <Route path="/auth/*" element={ <LoginPage /> } />
-                            <Route path="/*" element={ <Navigate to="/auth/login" /> } />
+                            <Route path="/auth/*" element={ <AuthRoutes /> } />
                         </>
                     )
                     : (
@@ -25,6 +24,7 @@ export const AppRouter = () => {
                         </>
                     )
             }
+            <Route path="/*" element={ <Navigate to="/auth/login" /> } />
         </Routes>
     )
 }
