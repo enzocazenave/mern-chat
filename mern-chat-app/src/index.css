@@ -24,19 +24,54 @@
     border-color: #09f;
 }
 
+/*
+    Navbar in src/components/
+*/
+
+.Navbar-container {
+    align-items: center;
+    background-color: #09f;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.Navbar-container button {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-size: 25px;
+    outline: none;
+    transition: opacity .3s;
+}
+
+.Navbar-container button:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+.Navbar-container_brand {
+    padding: 5px;
+    animation: changeBrandBG 2s linear infinite alternate-reverse;
+    border-radius: 10px;
+}
+
+/* -------------------- */
+
 /* 
     LoginPage in src/auth/pages/ 
 */
 
 .LoginPage-container {
     align-items: center;
+    background-color: rgb(193, 226, 249);
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: center;
+    overflow: hidden;
     padding: 25px;
     width: 100vw;
-    background-color: rgb(193, 226, 249);
 }
 
 .LoginPage-container_box {
@@ -131,14 +166,6 @@
     }
 }
 
-.fadeIn {
-    animation: fadeIn 0.3s ease;
-}
-
-.fadeIn-lg {
-    animation: fadeIn 1s ease;
-}
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -146,6 +173,19 @@
     100% {
         opacity: 1;
     }
+}
+
+@keyframes changeBrandBG {
+    0% { background-color: var(--light-blue); }
+    100% { background-color: var(--login-form-color); }
+}
+
+.fadeIn {
+    animation: fadeIn 0.3s ease;
+}
+
+.fadeIn-lg {
+    animation: fadeIn 1s ease;
 }
 
 /* -------------------- */
