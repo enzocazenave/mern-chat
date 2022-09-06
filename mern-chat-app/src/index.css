@@ -25,38 +25,67 @@
 }
 
 /*
+    SetProfileInfo in src/components/
+*/
+
+.SetProfileInfo-container {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-gray);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.SetProfileInfo-container_img {
+    border-radius: 50%;
+    height: 80px;
+    object-fit: cover;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.SetProfileInfo-container_box__text {
+    margin-bottom: 10px;
+}
+
+.SetProfileInfo-container_box__button {
+    padding: 6px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/*
     Navbar in src/components/
 */
 
 .Navbar-container {
     align-items: center;
-    background-color: #09f;
+    background-color: #0d6efd;
     display: flex;
     justify-content: space-between;
     padding: 10px;
 }
 
-.Navbar-container button {
-    background-color: transparent;
-    border: none;
-    color: #000;
-    font-size: 25px;
-    outline: none;
-    transition: opacity .3s;
+.Navbar-container_img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
-.Navbar-container button:hover {
-    opacity: .6;
+.Navbar-container_img:hover {
     cursor: pointer;
+    opacity: .8;
 }
 
 .Navbar-container_brand {
-    padding: 5px;
-    animation: changeBrandBG 2s linear infinite alternate-reverse;
-    border-radius: 10px;
+    padding: 5px
 }
-
-/* -------------------- */
 
 /* 
     LoginPage in src/auth/pages/ 
@@ -133,8 +162,6 @@
     opacity: 0.8;
 }
 
-/* -------------------- */
-
 /* 
     LoadingPage in src/pages/ 
 */
@@ -152,8 +179,6 @@
     color: #09f;
     font-size: 45px;
 }
-
-/* -------------------- */
 
 /* ANIMACIONES */
 
@@ -175,11 +200,6 @@
     }
 }
 
-@keyframes changeBrandBG {
-    0% { background-color: var(--light-blue); }
-    100% { background-color: var(--login-form-color); }
-}
-
 .fadeIn {
     animation: fadeIn 0.3s ease;
 }
@@ -188,20 +208,16 @@
     animation: fadeIn 1s ease;
 }
 
-/* -------------------- */
-
-
 /* VARIABLES */
 
 :root {
-    --light-blue: #09f;
+
+    --light-gray: rgb(230, 230, 230);
+    --light-blue: #0d6efd;
     --login-background-color: rgb(193, 226, 249);
     --login-form-color: rgb(113, 170, 210);
     --login-redirect-color: rgb(231, 122, 124);
 }
-
-/* -------------------- */
-
 
 /* MEDIA QUERYS */
 
@@ -222,5 +238,4 @@
     }
 }
 
-/* -------------------- */
 

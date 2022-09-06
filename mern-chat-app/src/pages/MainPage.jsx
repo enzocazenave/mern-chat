@@ -1,7 +1,10 @@
-import { Navbar } from '../components/';
+import { Navbar, SetProfileInfo } from '../components/';
 
 export const MainPage = () => {
     return (
-        <Navbar />
+        <>
+            <Navbar />
+            <SetProfileInfo />
+        </>
     )
 }
