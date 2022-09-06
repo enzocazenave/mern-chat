@@ -99,7 +99,6 @@
     font-size: 20px;
 }
 
-
 /*
     SetProfileInfo in src/components/
 */
@@ -137,6 +136,12 @@
     color: #fff;
     padding: 6px;
     width: 100%;
+    transition: opacity .3s;
+}
+
+.SetProfileInfo-container_box__button:hover {
+    opacity: .8;
+    cursor: pointer;
 }
 
 /*
@@ -150,8 +155,9 @@
     justify-content: space-between;
     padding: 10px;
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
+    transition: all 1s;
 }
 
 .Navbar-container_img {
@@ -321,5 +327,3 @@
         width: 25%
     }
 }
-
-
