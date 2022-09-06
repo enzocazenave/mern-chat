@@ -1,10 +1,13 @@
-import { Navbar, SetProfileInfo } from '../components/';
+import { Navbar, SetProfileInfo, Posts } from '../components/';
 
 export const MainPage = () => {
+    const hasPhoto = false;
+
     return (
         <>
             <Navbar />
-            <SetProfileInfo />
+            { (!hasPhoto) && <SetProfileInfo /> }
+            <Posts />
         </>
     )
 }

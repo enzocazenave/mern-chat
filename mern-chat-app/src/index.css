@@ -25,6 +25,75 @@
 }
 
 /*
+    Posts in src/components/
+*/
+
+.Posts-container {
+    margin: 10px;
+}
+
+.Posts-container_post {
+    background-color: var(--light-gray);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.Posts-container_post__profile {
+    display: flex;
+}
+
+.Posts-container_post__profile div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Posts-container_post__profile___img {
+    border-radius: 50%;
+    height: 30px;
+    margin-right: 10px;
+    object-fit: cover;
+    width: 30px;
+}
+
+.Posts-container_post__profile___username {
+    font-size: 15px;
+}
+
+.Posts-container_post__profile___date {
+    font-size: 10px;
+    color: rgb(190,190,190);
+    display: block;
+    width: 100%;
+}
+
+.Posts-container_post__text {
+    margin-top: 5px;
+    font-size: 15px;
+    width: 100%;
+    display: block;
+}
+
+.Posts-container_post__buttons button {
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    color: #000;
+    background-color: transparent;
+}
+
+.Posts-container_post__buttons button:hover {
+    cursor: pointer;
+    color: var(--like-color)
+}
+
+.Posts-container_post__buttons i {
+    font-size: 20px;;
+}
+
+
+/*
     SetProfileInfo in src/components/
 */
 
@@ -217,6 +286,7 @@
     --login-background-color: rgb(193, 226, 249);
     --login-form-color: rgb(113, 170, 210);
     --login-redirect-color: rgb(231, 122, 124);
+    --like-color: #FA383E;
 }
 
 /* MEDIA QUERYS */
