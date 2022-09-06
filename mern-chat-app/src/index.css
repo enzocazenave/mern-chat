@@ -37,6 +37,7 @@
     border-radius: 5px;
     padding: 10px;
     width: 100%;
+    margin-top: 10px;
 }
 
 .Posts-container_post__profile {
@@ -75,12 +76,18 @@
     display: block;
 }
 
-.Posts-container_post__buttons button {
+.Posts-container_post__buttons {
+    display: flex;
+    align-items: center;
     margin-top: 10px;
+}
+
+.Posts-container_post__buttons button {
     border: none;
     outline: none;
     color: #000;
     background-color: transparent;
+    margin-right: 5px;
 }
 
 .Posts-container_post__buttons button:hover {
@@ -89,7 +96,7 @@
 }
 
 .Posts-container_post__buttons i {
-    font-size: 20px;;
+    font-size: 20px;
 }
 
 
@@ -97,8 +104,12 @@
     SetProfileInfo in src/components/
 */
 
+.separation-posts {
+    margin-top: 70px;
+}
+
 .SetProfileInfo-container {
-    margin: 10px;
+    margin: 70px 10px 10px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,9 +121,9 @@
 .SetProfileInfo-container_img {
     border-radius: 50%;
     height: 80px;
+    margin-right: 20px;
     object-fit: cover;
     width: 80px;
-    margin-right: 20px;
 }
 
 .SetProfileInfo-container_box__text {
@@ -120,12 +131,12 @@
 }
 
 .SetProfileInfo-container_box__button {
-    padding: 6px;
-    width: 100%;
+    background-color: #0d6efd;
     border-radius: 5px;
     border: none;
-    background-color: #0d6efd;
     color: #fff;
+    padding: 6px;
+    width: 100%;
 }
 
 /*
@@ -138,6 +149,9 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
 .Navbar-container_img {

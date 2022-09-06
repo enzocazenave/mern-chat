@@ -7,7 +7,7 @@ export const MainPage = () => {
         <>
             <Navbar />
             { (!hasPhoto) && <SetProfileInfo /> }
-            <Posts />
+            <Posts hasPhoto={ hasPhoto } />
         </>
     )
 }
