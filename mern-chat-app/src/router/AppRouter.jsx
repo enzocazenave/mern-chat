@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { LoadingPage, MainPage } from '../pages/';
+import { LoadingPage, MainPage, ConfigPage } from '../pages/';
 import { AuthRoutes } from '../auth/routes/AuthRoutes';
 
 export const AppRouter = () => {
@@ -20,7 +20,8 @@ export const AppRouter = () => {
                     : (
                         <>
                             <Route path="/" element={ <MainPage /> } />
-                            <Route path="/*" element={ <Navigate to="/"/> } />
+                            <Route path="/config" element={ <ConfigPage /> } />
+                            <Route path="/*" element={ <Navigate to="/" /> } />
                         </>
                     )
             }
@@ -28,3 +29,4 @@ export const AppRouter = () => {
         </Routes>
     )
 }
+
