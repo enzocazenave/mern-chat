@@ -1,5 +1,9 @@
+import { SetInfo } from '../components/SetInfo';
+
 export const ConfigPage = () => {
     return (
-        <div>ConfigPage</div>
+        <>
+            <SetInfo />
+        </>
     )
 }

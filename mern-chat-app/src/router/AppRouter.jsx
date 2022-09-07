@@ -6,7 +6,7 @@ export const AppRouter = () => {
 
     const status = 'authenticated';
 
-    if (status === 'checking') return( <LoadingPage /> );
+    if (status === 'checking') return ( <LoadingPage /> );
     
     return (
         <Routes>
