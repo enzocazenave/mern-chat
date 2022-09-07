@@ -14,14 +14,31 @@ window.onscroll = () => {
     }
 }
 
-export const Navbar = () => {
+import { Link as RouterLink } from 'react-router-dom';
+
+export const Navbar = ({ isConfig = false }) => {
     return (
         <nav className="Navbar-container" id="navbar">
-            <h1 className="Navbar-container_brand">ChatVZ</h1>
-            <img  
-                className="Navbar-container_img"
-                src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" 
-            />
+            <h1 className="Navbar-container_brand">Posts</h1>
+            <div>
+                {
+                    (isConfig) &&
+                        <RouterLink
+                            className="Navbar-container_button"
+                            to="/"
+                        >
+                            <i className="fas fa-home"></i>
+                        </RouterLink>
+                }
+                <RouterLink
+                    to="/config"
+                >
+                    <img  
+                        className="Navbar-container_img"
+                        src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" 
+                    />
+                </RouterLink>
+            </div>
         </nav>
     )
 }
