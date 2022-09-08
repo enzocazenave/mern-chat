@@ -1,6 +1,6 @@
 export const SetProfileInfo = () => {
     return (
-        <div className="SetProfileInfo-container">
+        <div className="SetProfileInfo-container fadeIn">
             <img 
                 className="SetProfileInfo-container_img"
                 src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" 
