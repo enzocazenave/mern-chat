@@ -74,14 +74,17 @@ export const useAuthStore = () => {
         }
     }
 
-    const updateUser = async({ username, email }) => {
+    const startUpdateUser = async({ username, profile_img, uid }) => {
         try {
-            const { data } = await api.post('/user/update', { username, email });
+            const { data } = await api.post('/user/update', { username, profile_img, uid });
 
-            dispatch(onUpdateUser({
-                username,
-                email
-            }))
+            if (data.ok) {
+                dispatch(onUpdateUser({
+                    username,
+                    profile_img
+                }));
+                checkAuthToken();
+            }   
         } catch(error) {
             console.log(error);
         }
@@ -96,6 +99,7 @@ export const useAuthStore = () => {
         //* METODOS
         startRegister,
         startLogin,
+        startUpdateUser,
         checkAuthToken
     }
 }

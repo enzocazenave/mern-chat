@@ -29,7 +29,10 @@ export const authSlice = createSlice({
         },
         onUpdateUser: (state, { payload }) => {
             state.user.username = payload.username;
-            state.user.profile_img = payload.profile_img;
+            
+            if (payload.profile_img) {
+                state.user.profile_img = payload.profile_img;
+            }
         }
     }
 });

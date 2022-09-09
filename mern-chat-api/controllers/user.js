@@ -6,8 +6,17 @@ const updateUser = async(req, res = response) => {
     const { uid, username } = req.body;
         
     try {
-        let user = await User.findByIdAndUpdate(uid, { username });
+        let itUserExists = await User.findOne({ username });
+        
+        if (itUserExists) {
+            return res.status(400).json({
+                ok: false,
+                msg: `El nombre de usuario ${ username } ya está en uso`
+            })
+        }
 
+        let user = await User.findByIdAndUpdate(uid, { username });
+        
         if (!user) {
             return res.status(404).json({
                 ok: false,
