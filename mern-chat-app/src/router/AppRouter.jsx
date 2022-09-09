@@ -4,7 +4,7 @@ import { AuthRoutes } from '../auth/routes/AuthRoutes';
 
 export const AppRouter = () => {
 
-    const status = 'authenticated';
+    const status = 'not-authenticated';
 
     if (status === 'checking') return ( <LoadingPage /> );
     
