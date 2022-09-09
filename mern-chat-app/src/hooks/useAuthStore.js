@@ -46,6 +46,28 @@ export const useAuthStore = () => {
         }
     }
 
+    const checkAuthToken = async() => {
+        const token = localStorage.getItem('token');
+    
+        if (!token) return dispatch(onLogout());
+
+        try {
+            const { data } = api.get('/auth/renew');
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            
+            dispatch(onLogin({
+                name: data.name,
+                surname: data.surname,
+                uid: data.uid,
+            }));
+        } catch(error) {
+            localStorage.clear();
+            dispatch(onLogout());
+        }
+    }
+
     return {
         //* PROPIEDADES
         status,
@@ -55,5 +77,6 @@ export const useAuthStore = () => {
         //* METODOS
         startRegister,
         startLogin,
+        checkAuthToken
     }
 }

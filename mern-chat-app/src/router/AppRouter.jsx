@@ -1,10 +1,14 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { LoadingPage, MainPage, ConfigPage } from '../pages/';
 import { AuthRoutes } from '../auth/routes/AuthRoutes';
+import { useAuthStore } from '../hooks';
+import { useEffect } from 'react';
 
 export const AppRouter = () => {
 
-    const status = 'not-authenticated';
+    const { status, checkAuthToken } = useAuthStore();
+
+    useEffect(() => { checkAuthToken() }, []);
 
     if (status === 'checking') return ( <LoadingPage /> );
     
