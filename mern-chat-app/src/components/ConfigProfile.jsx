@@ -1,5 +1,11 @@
+import { useAuthStore } from "../hooks"
 
 export const ConfigProfile = () => {
+
+    const { user } = useAuthStore();
+
+    console.log(user);
+
     return (
         <div className="ConfigProfile-container fadeIn">
             <img 

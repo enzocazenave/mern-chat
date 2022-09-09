@@ -52,7 +52,7 @@ export const useAuthStore = () => {
         if (!token) return dispatch(onLogout());
 
         try {
-            const { data } = api.get('/auth/renew');
+            const { data } = await api.get('/auth/renew');
 
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
