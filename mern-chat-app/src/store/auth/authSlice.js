@@ -26,6 +26,10 @@ export const authSlice = createSlice({
         },
         clearErrorMessage: (state) => {
             state.errorMessage = undefined;
+        },
+        onUpdateUser: (state, { payload }) => {
+            state.user.username = payload.username;
+            state.user.profile_img = payload.profile_img;
         }
     }
 });
