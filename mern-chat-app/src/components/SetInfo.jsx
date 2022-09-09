@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useRef } from 'react';
+import { uploadProfileImage } from '../helpers/uploadProfileImage';
 import { useAuthStore, useForm } from '../hooks'; 
 
 const initialForm = {
@@ -7,11 +10,15 @@ const initialForm = {
 export const SetInfo = () => {
     
     const { username, onInputChange } = useForm(initialForm);
-    const { startUpdateUser, user } = useAuthStore();
+    const { user } = useAuthStore();
+    const [image, setImage] = useState([]);
 
-    const setInfoSubmit = (event) => {
+    const setInfoSubmit = async(event) => {
         event.preventDefault();
-        startUpdateUser({ username, uid: user.uid });
+    }
+
+    const onFileInputChange = (event) => {
+        setImage(event.target.files[0]);
     }
 
     return (
@@ -29,10 +36,15 @@ export const SetInfo = () => {
                            onChange={ onInputChange }
                         />
                 }
-                <input type="file"/>
+                <input 
+                    type="file" 
+                    onChange={ onFileInputChange }
+                    ref={ fileInputRef }
+                    accept="image/*"
+                />
 
-                <button>Seleccionar foto de perfil</button>
-                
+                <button type="button" onClick={ () => fileInputRef.current.click() } >Seleccionar foto de perfil</button>
+
                 <button type="submit">Actualizar</button>
             </form>
         </div>

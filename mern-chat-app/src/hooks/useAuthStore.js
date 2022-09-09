@@ -76,17 +76,10 @@ export const useAuthStore = () => {
 
     const startUpdateUser = async({ username, profile_img, uid }) => {
         try {
-            const { data } = await api.post('/user/update', { username, profile_img, uid });
-
-            if (data.ok) {
-                dispatch(onUpdateUser({
-                    username,
-                    profile_img
-                }));
-                checkAuthToken();
-            }   
+            const { data } = await api.post('/user/update', { username, profile_img, uid }); 
         } catch(error) {
-            console.log(error);
+            dispatch(onLogout(error.response.data?.msg || ''));
+            setTimeout(() => dispatch(clearErrorMessage()), 10);
         }
     }
 
