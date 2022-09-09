@@ -96,7 +96,6 @@ const loginUser = async(req, res = response) => {
 
 const renewToken = async(req, res = response) => {
     const { uid, name, surname, username, profile_img, email } = req;
-    console.log(req);
     const token = await generateJWT(uid, name, surname, username, profile_img, email );
     
     res.json({

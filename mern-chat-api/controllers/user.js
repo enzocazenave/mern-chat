@@ -1,17 +1,17 @@
 const { response } = require('express');
-
-const updateUser = (req, res = response) => {
-    const data = req.body;
-    //TODO: HACER UPDATE DE USER
-    // De "req.body" estoy recibiendo el uid del usuario y nombre de usuario para actualizar
+const User = require('../models/User');
 
 
+const updateUser = async(req, res = response) => {
+    const { uid } = req.body;
+    let user = await User.findOne({ uid });
 
-    res.status(200).json({
-        ok: true,
-        msg: 'peticion recibida',
-        ...data
-    })
+    if (!user) {
+        res.status(404).json({
+            ok: false,
+            msg: 'El uid recibido en la petición no existe'
+        })
+    }
 }
 
 
