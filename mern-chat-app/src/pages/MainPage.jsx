@@ -1,7 +1,11 @@
 import { Navbar, SetProfileInfo, Posts } from '../components/';
+import { useAuthStore } from '../hooks';
 
 export const MainPage = () => {
-    const hasPhoto = false;
+
+    const { user } = useAuthStore();
+
+    const hasPhoto = user.profile_img && user.username;
     
     return (
         <>

@@ -16,6 +16,8 @@ export const useAuthStore = () => {
             dispatch(onLogin({
                 name: data.name,
                 surname: data.surname,
+                username: data.username,
+                profile_img: data.profile_img,
                 uid: data.uid,
             }));
         } catch(error) {
@@ -35,6 +37,8 @@ export const useAuthStore = () => {
             dispatch(onLogin({
                 name: data.name,
                 surname: data.surname,
+                username: data.username,
+                profile_img: data.profile_img,
                 uid: data.uid,
             }));
         } catch(error) {
@@ -53,6 +57,7 @@ export const useAuthStore = () => {
 
         try {
             const { data } = await api.get('/auth/renew');
+            console.log(data);
 
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
@@ -60,6 +65,8 @@ export const useAuthStore = () => {
             dispatch(onLogin({
                 name: data.name,
                 surname: data.surname,
+                username: data.username,
+                profile_img: data.profile_img,
                 uid: data.uid,
             }));
         } catch(error) {

@@ -15,8 +15,12 @@ window.onscroll = () => {
 }
 
 import { Link as RouterLink } from 'react-router-dom';
+import { useAuthStore } from '../hooks';
 
 export const Navbar = ({ isConfig = false }) => {
+
+    const { user } = useAuthStore();
+
     return (
         <nav className="Navbar-container" id="navbar">
             <h1 className="Navbar-container_brand">Posts</h1>
@@ -35,7 +39,7 @@ export const Navbar = ({ isConfig = false }) => {
                 >
                     <img  
                         className="Navbar-container_img"
-                        src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" 
+                        src={ user.profile_img } 
                     />
                 </RouterLink>
             </div>
