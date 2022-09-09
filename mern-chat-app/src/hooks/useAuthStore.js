@@ -5,9 +5,8 @@ import { onChecking, onLogin, onLogout, clearErrorMessage } from '../store';
 export const useAuthStore = () => {
     const { status, user, errorMessage } = useSelector(state => state.auth);
     const dispatch = useDispatch();
-
+    
     const startRegister = async({ email, password, name, surname }) => {
-        console.log({email,password,name,surname})
         try {
             const { data } = await api.post('/auth/new', { email, password, name, surname });
             
@@ -18,12 +17,34 @@ export const useAuthStore = () => {
                 name: data.name,
                 surname: data.surname,
                 uid: data.uid,
-            }))
+            }));
         } catch(error) {
             dispatch(onLogout(error.response.data?.msg || ''));
             setTimeout(() => dispatch(clearErrorMessage()), 10);
         }
     }   
+
+    const startLogin = async({ email, password }) => {
+        dispatch(onChecking());
+        try {
+            const { data } = await api.post('/auth', { email, password });
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+
+            dispatch(onLogin({
+                name: data.name,
+                surname: data.surname,
+                uid: data.uid,
+            }));
+        } catch(error) {
+            dispatch(onLogout('Credenciales incorrectas'));
+
+            setTimeout(() => {
+                dispatch(clearErrorMessage());
+            }, 10);
+        }
+    }
 
     return {
         //* PROPIEDADES
@@ -32,6 +53,7 @@ export const useAuthStore = () => {
         errorMessage,
 
         //* METODOS
-        startRegister
+        startRegister,
+        startLogin,
     }
 }

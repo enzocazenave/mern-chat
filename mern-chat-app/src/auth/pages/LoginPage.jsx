@@ -1,6 +1,26 @@
+import { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useAuthStore, useForm } from '../../hooks';
+
+const initialForm = {
+    email: '',
+    password: ''
+}
 
 export const LoginPage = () => {
+
+    const { startLogin, errorMessage } = useAuthStore();
+    const { email, password, onInputChange } = useForm(initialForm);
+
+    const loginSubmit = (event) => {
+        event.preventDefault();
+        startLogin({ email, password })
+    }
+
+    useEffect(() => {
+        console.log(errorMessage);
+    }, [errorMessage])
+
     return (
         <div className="LoginPage-container fadeIn">
             <div className="LoginPage-container_box">
@@ -9,11 +29,25 @@ export const LoginPage = () => {
                 </p>
             </div>
 
-            <form className="LoginPage-container_form">
+            <form onSubmit={ loginSubmit } className="LoginPage-container_form">
                 <h1 className="LoginPage-container_form__title">Iniciar sesión</h1>
                 
-                <input className="form-input" placeholder="Correo electrónico" type="email" />
-                <input className="form-input" placeholder="Contraseña" type="password" />
+                <input 
+                    className="form-input" 
+                    placeholder="Correo electrónico" 
+                    type="email" 
+                    name="email"
+                    value={ email }
+                    onChange={ onInputChange }
+                />
+                <input 
+                    className="form-input" 
+                    placeholder="Contraseña"
+                    type="password" 
+                    name="password"
+                    value={ password }
+                    onChange={ onInputChange }
+                />
 
                 <button className="LoginPage-container_form__button" type="submit">Ingresar</button>
 

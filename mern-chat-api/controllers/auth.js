@@ -24,7 +24,7 @@ const createUser = async(req, res = response) => {
 
         await user.save();
 
-        const token = await generateJWT(user.id, user.name);
+        const token = await generateJWT(user.id, user.name, user.surname, user.email);
 
         res.status(201).json({
             ok: true,
@@ -43,6 +43,49 @@ const createUser = async(req, res = response) => {
     }
 }
 
+const loginUser = async(req, res = response) => {
+    
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'No existe un usuario con ese correo electrónico'
+            });
+        }
+
+        const isPasswordValid = bcrypt.compareSync(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'La contraseña es incorrecta'
+            });
+        }
+
+        const token = await generateJWT(user.id, user.name, user.surname, user.email);
+
+        res.json({
+            ok: true,
+            uid: user.id,
+            name: user.name,
+            surname: user.surname,
+            token
+        });
+    } catch(error) {
+        console.log(error);
+
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+        })
+    }
+}
+
 module.exports = {
     createUser,
+    loginUser
 }
