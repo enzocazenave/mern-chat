@@ -18,16 +18,21 @@ export const SetInfo = () => {
         <div className="SetInfo-container fadeIn">
             <h2 className="SetInfo-container_title">Agregar información</h2>
             <form className="SetInfo-container_form" onSubmit={ setInfoSubmit } >
-                <input 
-                    className="form-input" 
-                    placeholder="Nombre de usuario" 
-                    type="text"
-                    name="username"
-                    value={ username }
-                    onChange={ onInputChange }
-                />
+                {   
+                    (!user.username) &&
+                        <input 
+                           className="form-input" 
+                           placeholder="Nombre de usuario" 
+                           type="text"
+                           name="username"
+                           value={ username }
+                           onChange={ onInputChange }
+                        />
+                }
                 <input type="file"/>
-                <button>Seleccionar imagen</button>
+
+                <button>Seleccionar foto de perfil</button>
+                
                 <button type="submit">Actualizar</button>
             </form>
         </div>
