@@ -1,3 +1,5 @@
+import { Link as RouterLink } from 'react-router-dom';
+
 export const SetProfileInfo = () => {
     return (
         <div className="SetProfileInfo-container fadeIn">
@@ -7,7 +9,7 @@ export const SetProfileInfo = () => {
             />
             <div className="SetProfileInfo-container_box">
                 <p className="SetProfileInfo-container_box__text">¿Todavía no tienes nombre de usuario? Haz click aquí y configuralo junto con tu foto de perfil.</p>
-                <button className="SetProfileInfo-container_box__button">Ir ahora</button>
+                <RouterLink to="/config"><button className="SetProfileInfo-container_box__button">Ir ahora</button></RouterLink>
             </div>
         </div>
     )

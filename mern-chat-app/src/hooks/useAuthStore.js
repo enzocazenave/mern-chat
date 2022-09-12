@@ -75,6 +75,12 @@ export const useAuthStore = () => {
         }
     }
 
+    const startUpdateUsername = async({ username }) => {
+        
+    }
+
+
+
     return {
         //* PROPIEDADES
         status,
@@ -84,6 +90,7 @@ export const useAuthStore = () => {
         //* METODOS
         startRegister,
         startLogin,
-        checkAuthToken
+        checkAuthToken,
+        startUpdateUsername
     }
 }

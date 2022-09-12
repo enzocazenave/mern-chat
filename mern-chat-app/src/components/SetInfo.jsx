@@ -1,4 +1,20 @@
+import { useAuthStore, useForm } from '../hooks/';
+
+const initialForm = {
+    username: ''
+}
+
 export const SetInfo = () => {
+    const { username, onInputChange } = useForm(initialForm);
+    const { startUpdateUsername } = useAuthStore();
+
+    const startUpdateUser = (e) => {
+        e.preventDefault();
+        if (username.length > 0) return startUpdateUsername({ username });
+        console.log('muy corto')
+
+    }
+
     return (
         <div className="SetInfo-container fadeIn">
             <h2 className="SetInfo-container_title">Agregar información</h2>
@@ -7,10 +23,11 @@ export const SetInfo = () => {
                     className="form-input" 
                     placeholder="Nombre de usuario" 
                     type="text"
+                    name="username"
+                    value={ username }
+                    onChange={ onInputChange }
                 />
-                <input type="file"/>
-                <button>Seleccionar imagen</button>
-                <button>Actualizar</button>
+                <button onClick={ startUpdateUser }>Actualizar</button>
             </form>
         </div>
     )
