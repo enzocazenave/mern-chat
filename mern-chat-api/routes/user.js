@@ -8,7 +8,6 @@ const router = Router();
 router.post('/update',
     [
         check('uid', 'ERROR: uid no recibida').not().isEmpty(),
-        check('username', 'El nombre de usuario es obligatorio').not().isEmpty(),
         fieldValidator
     ],
     updateUser

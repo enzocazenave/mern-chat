@@ -76,7 +76,7 @@ export const useAuthStore = () => {
     }
 
     const startUpdateUsername = async({ username }) => {
-        
+        console.log(username)
     }
 
 
