@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { api } from '../api';
-import { onChecking, onLogin, onLogout, clearErrorMessage } from '../store';
+import { onChecking, onLogin, onLogout, clearErrorMessage, updateUsername } from '../store';
 
 export const useAuthStore = () => {
     const { status, user, errorMessage } = useSelector(state => state.auth);
@@ -50,6 +50,17 @@ export const useAuthStore = () => {
         }
     }
 
+    const startUpdateUsername = async({ username, uid }) => {
+        try {
+            const { data } = await api.post('/user/update', { username, uid });
+            if (data.ok) dispatch(updateUsername(username));
+            checkAuthToken();
+        } catch(error) {
+            dispatch(onLogout(error.response.data?.msg || ''));
+            setTimeout(() => dispatch(clearErrorMessage()), 10);
+        }
+    }
+
     const checkAuthToken = async() => {
         const token = localStorage.getItem('token');
     
@@ -75,9 +86,7 @@ export const useAuthStore = () => {
         }
     }
 
-    const startUpdateUsername = async({ username }) => {
-        console.log(username)
-    }
+    
 
 
 

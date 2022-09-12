@@ -6,11 +6,11 @@ const initialForm = {
 
 export const SetInfo = () => {
     const { username, onInputChange } = useForm(initialForm);
-    const { startUpdateUsername } = useAuthStore();
+    const { startUpdateUsername, user } = useAuthStore();
 
     const startUpdateUser = (e) => {
         e.preventDefault();
-        if (username.length > 0) return startUpdateUsername({ username });
+        if (username.length > 0) return startUpdateUsername({ username, uid: user.uid });
         console.log('muy corto')
 
     }
